@@ -1,8 +1,11 @@
 
 
+#home/
+darwin
+#build/
 darwintypes.lua
+#src/
 dependencies
 imports
-darwin
 
 
