@@ -1,8 +1,6 @@
 
 ---
 
-## BUILD
-
 If you want to compile the project, you can run the following command:
 ```bash
 sh build.sh
