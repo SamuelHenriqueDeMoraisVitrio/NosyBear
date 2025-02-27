@@ -33,7 +33,6 @@ darwin run_blueprint build -mode folder
 
 The final binary will be located in the releases folder.
 
----
 
 
 
