@@ -3,6 +3,7 @@
 #home/
 darwin
 a.out
+main.lua
 #build/
 darwintypes.lua
 #src/
