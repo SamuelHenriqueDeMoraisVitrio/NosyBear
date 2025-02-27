@@ -27,7 +27,7 @@ To request a link
 ```
 
 | PARAM               | Types Value               | Examplo                                                | DEFAULT     | Explain                     |
---------------------------------------------------------------------------------------------------------------------------------------------------------
+|---------------------|---------------------------|--------------------------------------------------------|-------------|-----------------------------|
 | URL                 | Table                     | {"Key"="Value"}                                        | Mandatory   | URL to feth                 |
 | PARAMS              | Table                     | {"Key"="Value"}                                        | nil         | Params to be passed         |
 | HEADER              | Table                     | {"Key"="Value"}                                        | nil         | Headers to be passed        |
