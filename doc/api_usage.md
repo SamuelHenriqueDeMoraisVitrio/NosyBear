@@ -1,16 +1,16 @@
 
 ---
 
-# API_USAGE
+## API_USAGE
 
-## Dependencie
+### Dependencie
 To include in your project:
 ```lua
   local NosyBear = require("NosyBear.NosyBear")
 ```
 ---
 
-## Request
+### Request
 To request a link
 ```lua
   params_peek = {
@@ -43,7 +43,7 @@ To request a link
 
 ---
 
-## Response
+### Response
 The request response
 ```lua
   ...
