@@ -1,4 +1,5 @@
 
+---
 
 # API_USAGE
 
@@ -97,9 +98,6 @@ The request response
   print(status_code)
 ```
 
-
-
-
-
+---
 
 
