@@ -4,7 +4,7 @@ function Initialize_silver()
   
   darwin.silverchain.generate({
       src = "src",
-      tags = { "dep", "mac", "types", "const", "dec", "def" },
+      tags = { "dep", "mac", "types", "global", "dec", "def" },
       project_short_cut = "NosyBear"
   })
 

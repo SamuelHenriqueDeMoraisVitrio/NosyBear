@@ -1,24 +1,18 @@
 
 //silver_chain_scope_start
 //mannaged by silver chain
-#include "imports/imports.dep.h"
+#include "imports/imports.global.h"
 //silver_chain_scope_end
 
 
-int main(){
-    BearHttpsRequest *request = newBearHttpsRequest("https://example.com");
-    BearHttpsResponse *response =BearHttpsRequest_fetch(request);
-    const int MAX_CONTENT = 2000;
-    unsigned char *body = BearHttpsResponse_read_body(response,MAX_CONTENT);
-    if(body){
-        printf("body: %s\n",body);
-    }
+int luaopen_NosyBear_start_point(lua_State *state){
 
-    if(BearHttpsResponse_error(response)){
-        printf("error: %s\n",BearHttpsResponse_get_error_msg(response));
-    }
+  lua_n = newLuaCEmbedNamespace();
 
-    BearHttpsRequest_free(request);
-    BearHttpsResponse_free(response);
+  LuaCEmbed * l  = lua_n.newLuaLib(state);
+  //lua_n.add_callback(l,"add",add_cfunc);
+  //lua_n.add_callback(l,"sub",sub_cfunc);
+
+  lua_n.perform(l);
 
 }
