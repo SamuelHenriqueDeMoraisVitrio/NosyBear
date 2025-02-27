@@ -7,6 +7,8 @@
 ---@return nil
 local function Install_dependencie(Link, path)
 
+  darwin.dtw.remove_any(path .. Link.out)
+
   local sucesses = os.execute("curl -s -L " .. Link.link .. " -o " .. path .. Link.out) -- Curl -L {link} -o {path_for_dependencie/}{out_renamed}
 
   if sucesses then
@@ -30,7 +32,7 @@ function Install_dependencies()
 
   local links = {
     {
-      link = "https://github.com/OUIsolutions/BearHttpsClient/releases/download/0.0.1/BearHttpsClient.c",
+      link = "https://github.com/OUIsolutions/BearHttpsClient/releases/download/0.0.3/BearHttpsClientOne.c",
       out = "dep.Bear.h"
     },
     {
