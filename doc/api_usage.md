@@ -8,6 +8,7 @@ To include in your project:
   local NosyBear = require("NosyBear.NosyBear")
 ```
 ---
+
 ## Request
 To request a link
 ```lua
@@ -24,6 +25,7 @@ To request a link
   }
 
   local response = NosyBear.peek(params_peek)
+
 ```
 
 | PARAM               | Types Value               | Examplo                                                | DEFAULT     | Explain                     |
@@ -36,38 +38,63 @@ To request a link
 | METHOD              | String                    | "GET"                                                  | "GET"       | Method of request           |
 | MAX_DOWNLOAD_SIZE   | Integer                   | 1000                                                   | ()          | Download space limit        |
 | UPLOAD_PATH         | String                    | "/home/Documents/juninho_trevozo.txt"                  | Dont upload | File path to pass to body   |
-| UPLOAD_ANY          | String or table(for:json) | "Binary string" ou {name="juninho", nikname="Trevoso"} | Dont upload | Binary or json to pass body |
+| UPLOAD_ANY          | String or table(for:json) | "Binary string" or {name="juninho", nikname="Trevoso"} | Dont upload | Binary or json to pass body |
 
+---
 
+## Response
+The request response
 ```lua
+  ...
 
-  local NosyBear = require("NosyBear.NosyBear")
-
-  params_peek = {
-    URL="",
-    PARAMS={KEY=VALUE, ...},
-    HEADERS={KEY=VALUE, ...},
-    COOKIES={KEY=VALUE, ...},
-    AUTH={KEY=VALUE, ...},
-    TIMEOUT=SECONDS_INTEGER,
-    ALLOW_REDIRECTS=BOOLEAN,
-    PROXIES={KEY=VALUE, ...},
-    VERIFY=BOOLEAN,
-    STREAM=BOOLEAN,
-    CERT={PATH, PATH, ...}
-  }
-
-  response = NosyBear.peek(params_peek)
-
+  local response = NosyBear.peek(params_peek)
+  
   ---@type string
-  local url_response response.url
-  ---@type 
+  local url_response = response.url
+  ---@type string|table|any
   local body = response.body
+  ---@type string
   local type_body = response.type_body
+  ---@type table
   local cookies = response.cookies
+  ---@type table
   local headers = response.headers
+  ---@type integer
   local status_code = response.status_code
+  ---@type Boolean
+  local requisition_error = response.error
 
+  if requisition_error.exist then
+    print(requisition_error.message)
+    return
+  end
+
+  print(url_response)
+
+  if type_body == "str" then
+    print(body)
+  end
+  if type_body == "table" then
+    print("Is a json type")
+  end
+  if type_body == "bin" then
+    print("Is a binary type")
+  end
+  if type_body == nil then
+    print("Is dont a body")
+  end
+
+  for i=1, #cookies do
+    print("KEY: " .. cookies[i].key)
+    print("VALUE: " .. cookies[i].value)
+  end
+
+  for i=1, #headers do
+    print("KEY: ", headers[i].key)
+    print("VALUE: ", headers[i].value)
+  end
+
+  print(status_code)
 ```
 
 
