@@ -1,6 +1,6 @@
 
 
-function Initialize_silver()
+Initialize_silver = function ()
   
   darwin.silverchain.generate({
       src = "src",

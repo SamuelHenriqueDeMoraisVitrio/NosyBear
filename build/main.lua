@@ -4,13 +4,15 @@ darwin = darwin
 
 function main()
 
-  local project = darwin.create_project("NosyBear")
+  if not Get_args() then
 
-  Install_dependencies()
+    Install_dependencies()
 
-  Initialize_silver()
+    Initialize_silver()
 
-  Update_doc()
+    Update_doc()
+
+  end
 
   print("\tEND\n\n")
 

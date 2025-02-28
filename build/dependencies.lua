@@ -20,8 +20,19 @@ local function Install_dependencie(Link, path)
 
 end
 
+local links = {
+  {
+    link = "https://github.com/OUIsolutions/BearHttpsClient/releases/download/0.0.3/BearHttpsClientOne.c",
+    out = "dep.Bear.h"
+  },
+  {
+    link = "https://github.com/OUIsolutions/LuaCEmbed/releases/download/v0.780/LuaCEmbed.h",
+    out = "dep.LuaCEmbed.h"
+  }
+}
+
 ---@return nil
-function Install_dependencies()
+Install_dependencies = function ()
 
 
   local path = "src/dependencies/"
@@ -29,17 +40,6 @@ function Install_dependencies()
   local cache = path .. "cache"
   darwin.dtw.write_file(cache, "")
   darwin.dtw.remove_any(cache)
-
-  local links = {
-    {
-      link = "https://github.com/OUIsolutions/BearHttpsClient/releases/download/0.0.3/BearHttpsClientOne.c",
-      out = "dep.Bear.h"
-    },
-    {
-      link = "https://github.com/OUIsolutions/LuaCEmbed/releases/download/v0.780/LuaCEmbed.h",
-      out = "dep.LuaCEmbed.h"
-    }
-  }
 
   for I=1, #links do
     Install_dependencie(links[I], path)

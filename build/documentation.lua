@@ -3,7 +3,7 @@
 BUILD = darwin.candango.Get_text_by_file_content("doc/build.md")
 API_USAGE = darwin.candango.Get_text_by_file_content("doc/api_usage.md")
 
-function Update_doc()
+Update_doc = function ()
 
   local readme = darwin.candango.Render_text(darwin.dtw.load_file("doc/main.md"))
 
