@@ -5,8 +5,6 @@
 //silver_chain_scope_end
 
 
-/*
- * LIB
 int luaopen_NosyBear_start_point(lua_State *state){
 
   lua_n = newLuaCEmbedNamespace();
@@ -17,17 +15,5 @@ int luaopen_NosyBear_start_point(lua_State *state){
 
   return lua_n.perform(l);
 }
-*/
 
-int main(){
 
-  lua_n = newLuaCEmbedNamespace();
-  LuaCEmbed * l  = lua_n.newLuaEvaluation();
-
-  lua_n.add_callback(l,"teste", requesition);
-  //lua_n.add_callback(l,"sub",sub_cfunc);
-  
-  lua_n.evaluate(l, "teste('samuel henrique de morais vitrio')");
-
-  return 0;
-}
