@@ -11,13 +11,11 @@
 struct Argument_handling{
   
   const char *URL;
-  Keys_params *HEADERS;
-  Keys_params *COOKIES;
-  Keys_params *PARAMS;
+  List_keys_params *Keys_params;
   long MAX_ALLOW_REDIRECTS;
-  char *METHOD;
+  const char *METHOD;
   long MAX_DOWNLOAD_SIZE;
-  char *UPLOAD_PATH;
-  char *UPLOAD_ANY;
+  const char *UPLOAD_PATH;
+  const char *UPLOAD_ANY;
 };
 
