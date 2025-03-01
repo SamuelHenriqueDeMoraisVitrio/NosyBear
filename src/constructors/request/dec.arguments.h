@@ -17,7 +17,7 @@ void *private_get_result_or_default(LuaCEmbedTable *table, const char *prop, voi
 
 void private_update_params(LuaCEmbedTable *table, Params_list *params, const char *prop);
 
-Argument_handling *new_Argument_handling(LuaCEmbedTable *args_peek);
+Argument_handling *new_Argument_handling(LuaCEmbed *args, LuaCEmbedTable *args_peek);
 
 
 void free_Argument_handling(Argument_handling *self);

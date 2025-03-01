@@ -7,6 +7,7 @@
 
 int luaopen_NosyBear_start_point(lua_State *state){
 
+  bear = newBearHttpsNamespace();
   lua_n = newLuaCEmbedNamespace();
 
   LuaCEmbed * l  = lua_n.newLuaLib(state);

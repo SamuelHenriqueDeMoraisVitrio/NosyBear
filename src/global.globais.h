@@ -6,4 +6,5 @@
 
 
 LuaCEmbedNamespace  lua_n;
+BearHttpsNamespace bear;
 

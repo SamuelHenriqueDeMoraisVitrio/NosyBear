@@ -5,13 +5,16 @@
 
 int main(){
 
+  bear = newBearHttpsNamespace();
   lua_n = newLuaCEmbedNamespace();
   LuaCEmbed * l  = lua_n.newLuaEvaluation();
 
-  lua_n.add_callback(l,"teste", requesition);
+  lua_n.add_callback(l,"peek", requesition);
   //lua_n.add_callback(l,"sub",sub_cfunc);
   
-  lua_n.evaluate(l, "teste({'ssss', samu='22', eu='44', samuel='samuel', URL='www.google.com', HEADERS={'sammul'}})");
+  lua_n.evaluate(l, "r = peek({URL='https://www.google.com', HEADERS={key1='value'}})");
+  const char *response = lua_n.get_string_evaluation(l,"r");
+  printf("result: %s\n",response);
 
   if(lua_n.has_errors(l)){
     printf("error: %s\n",lua_n.get_error_message(l));

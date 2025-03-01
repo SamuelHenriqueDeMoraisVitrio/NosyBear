@@ -2,6 +2,7 @@
 //silver_chain_scope_start
 //mannaged by silver chain
 #include "../../imports/imports.dec.h"
+#include <stdlib.h>
 //silver_chain_scope_end
 
 Keys_params *private_new_Keys_params(const char *key, const char *value){
@@ -99,7 +100,7 @@ void private_update_params(LuaCEmbedTable *table, Params_list *params, const cha
 
 }
 
-Argument_handling *new_Argument_handling(LuaCEmbedTable *args_peek){
+Argument_handling *new_Argument_handling(LuaCEmbed *args, LuaCEmbedTable *args_peek){
 
   Argument_handling *self = malloc(sizeof(Argument_handling) + 1);
   if(!self){
@@ -108,6 +109,10 @@ Argument_handling *new_Argument_handling(LuaCEmbedTable *args_peek){
   }
   
   self->URL = lua_n.tables.get_string_prop(args_peek, "URL");
+  if(lua_n.has_errors(args)){
+    printf("Error: %s", lua_n.get_error_message(args));
+    exit(1);
+  }
 
   self->MAX_ALLOW_REDIRECTS = (long)private_get_result_or_default(args_peek, "MAX_ALLOW_REDIRECTS", (void*)1000, (void*)lua_n.tables.get_long_prop);
 
