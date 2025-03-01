@@ -8,6 +8,10 @@ function main()
 
   arguments = {
     {
+      arg="help",
+      func=Help
+    },
+    {
       arg="silver",
       func=Initialize_silver
     },
@@ -19,6 +23,14 @@ function main()
       arg="document",
       func=Update_doc
     },
+    {
+      arg="comp_testing",
+      func=Comp_testing
+    },
+    {
+      arg="comp",
+      func=Comp
+    }
   }
 
   if not Get_args() then
@@ -28,6 +40,10 @@ function main()
     Initialize_silver()
 
     Update_doc()
+
+    Comp_testing()
+
+    Comp()
 
   end
 

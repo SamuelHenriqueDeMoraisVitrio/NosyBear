@@ -13,6 +13,11 @@ int main(){
   
   lua_n.evaluate(l, "teste('samuel henrique de morais vitrio')");
 
+  if(lua_n.has_errors(l)){
+    printf("error: %s\n",lua_n.get_error_message(l));
+  }
+  lua_n.free(l);
+
   return 0;
 }
 

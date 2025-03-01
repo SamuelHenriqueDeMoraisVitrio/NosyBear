@@ -12,6 +12,8 @@ function Get_args()
     end
   end
 
+  print("")
+
   return exist_args
 
 end
