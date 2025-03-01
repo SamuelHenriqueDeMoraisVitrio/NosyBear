@@ -18,6 +18,7 @@ end
 
 function Comp_testing()
   Preparation("gcc", "testing.c ", "", "test", "test.out")
+  os.execute("test/test.out > test/teste.txt")
 end
 
 function Comp()
