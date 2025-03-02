@@ -22,7 +22,11 @@ function Comp_testing()
 end
 
 function Comp()
+  local raw_types_temp = darwin.dtw.load_file("realeses/NosyBear/NosyBear.lua")
   Preparation("gcc", "main.c", "-shared -fpic", "realeses/NosyBear", "NosyBear.so")
+  if raw_types_temp then
+    darwin.dtw.write_file("realeses/NosyBear/NosyBear.lua", raw_types_temp)
+  end
 end
 
 

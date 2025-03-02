@@ -1,0 +1,26 @@
+\# NosyBear
+People love to "snoop" around, and the lib will fetch data from the web.
+
+<details>
+  <summary><h2>BUILD</h2></summary>
+
+  {BUILD}
+
+</details>
+
+{API_USAGE}
+
+\#\# Simple demonstration example.
+
+{%
+  local examples, size = darwin.dtw.list_files("examples", true)
+  local product = ""
+
+  for i=1, size do
+    product = product .. "\n```bash\n" .. darwin.dtw.load_file(examples[i]) .. "\n```\n"
+  end
+}
+
+{product}
+
+

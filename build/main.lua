@@ -56,6 +56,8 @@ function main()
 
     Comp()
 
+    Update_types()
+
   end
 
   print("\tEND\n\n")

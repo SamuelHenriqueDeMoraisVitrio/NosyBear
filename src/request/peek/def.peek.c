@@ -69,6 +69,7 @@ LuaCEmbedResponse  *requesition(LuaCEmbed *args){
 
   bear.request.free(request);
   bear.response.free(response);
+  free_Argument_handling(arguments_of_peek);
 
   return lua_n.response.send_raw_string((const char *)body, size_body);
 }
