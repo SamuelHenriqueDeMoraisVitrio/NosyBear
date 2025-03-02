@@ -9,8 +9,7 @@ int main(){
   lua_n = newLuaCEmbedNamespace();
   LuaCEmbed * l  = lua_n.newLuaEvaluation();
 
-  lua_n.add_callback(l,"peek", requesition);
-  //lua_n.add_callback(l,"sub",sub_cfunc);
+  Add_callbacks(l);
   
   lua_n.evaluate(l, "r = peek({URL='https://www.google.com', HEADERS={key1='value'}})");
   const char *response = lua_n.get_string_evaluation(l,"r");

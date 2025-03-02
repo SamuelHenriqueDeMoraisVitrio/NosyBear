@@ -17,12 +17,13 @@ local function Preparation(cc, main, flags, path_out, name_out)
 end
 
 function Comp_testing()
-  Preparation("gcc", "testing.c ", "", "test", "test.out")
-  os.execute("test/test.out > test/teste.txt")
+  Preparation("gcc", "testing.c ", "", "test/c", "test.out")
+  os.execute("test/c/test.out > test/c/teste.txt")
 end
 
 function Comp()
   Preparation("gcc", "main.c", "-shared -fpic", "realeses/NosyBear", "NosyBear.so")
+  darwin.dtw.copy_any_overwriting("types.lua", "realeses/NosyBear/NosyBear.lua")
 end
 
 
