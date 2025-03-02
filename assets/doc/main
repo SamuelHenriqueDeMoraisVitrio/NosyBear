@@ -13,11 +13,14 @@ People love to "snoop" around, and the lib will fetch data from the web.
 \#\# Simple demonstration example.
 
 {%
-  local examples, size = darwin.dtw.list_files("examples", true)
+  local examples, size = darwin.dtw.list_dirs("assets/examples", true)
   local product = ""
 
   for i=1, size do
-    product = product .. "\n```bash\n" .. darwin.dtw.load_file(examples[i]) .. "\n```\n"
+    local description = "\n" .. darwin.dtw.load_file(examples[i] .. "description.md")
+    local cod_example = "\n```bash\n" .. darwin.dtw.load_file(examples[i] .. "main.lua") .. "\n```\n"
+    local message = description .. cod_example
+    product = product .. message
   end
 }
 
