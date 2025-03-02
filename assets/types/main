@@ -1,12 +1,9 @@
 
+{%
+  local path = "assets/types/"
+}
 
-
-
-
-
----@class NosyBear
-
-
+{darwin.dtw.load_file(path .. "types")}
 
 ---@return NosyBear
 local function get_NosyBear_lib()
@@ -42,7 +39,3 @@ end
 local lib = get_NosyBear_lib()
 
 return lib
-
-
-
-

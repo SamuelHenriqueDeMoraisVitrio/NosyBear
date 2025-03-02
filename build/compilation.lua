@@ -23,7 +23,6 @@ end
 
 function Comp()
   Preparation("gcc", "main.c", "-shared -fpic", "realeses/NosyBear", "NosyBear.so")
-  darwin.dtw.copy_any_overwriting("types.lua", "realeses/NosyBear/NosyBear.lua")
 end
 
 
