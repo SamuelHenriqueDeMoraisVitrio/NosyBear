@@ -1,21 +1,13 @@
 
 
----@return boolean
 function Get_args()
-
-  local exist_args = false
   for _, obj in ipairs(arguments) do
-    if darwin.argv.one_of_args_exist(obj.arg) then
-      print("\t" .. obj.arg .. "\n")
-      exist_args = true
+    if darwin.argv.one_of_args_exist(obj.arg) or darwin.argv.get_total_args_size() == 5 then
+      print("\n\t\27[34m" .. obj.arg .. "\27[0m\n")
       obj.func()
     end
   end
-
   print("")
-
-  return exist_args
-
 end
 
 

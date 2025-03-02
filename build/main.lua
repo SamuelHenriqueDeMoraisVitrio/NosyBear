@@ -44,24 +44,9 @@ function main()
     }
   }
 
-  if not Get_args() then
-
-    Install_dependencies()
-
-    Initialize_silver()
-
-    Update_doc()
-
-    Comp_testing()
-
-    Comp()
-
-    Update_types()
-
-  end
+  Get_args()
 
   print("\tEND\n\n")
-
 end
 
 
