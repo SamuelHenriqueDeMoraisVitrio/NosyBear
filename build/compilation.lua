@@ -27,6 +27,9 @@ function Comp()
   if raw_types_temp then
     darwin.dtw.write_file("realeses/NosyBear/NosyBear.lua", raw_types_temp)
   end
+
+  darwin.dtw.remove_any("realeses/NosyBear.zip")
+  os.execute("zip -r realeses/NosyBear.zip realeses/NosyBear")
 end
 
 
