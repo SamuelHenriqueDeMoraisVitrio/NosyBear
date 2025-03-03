@@ -87,20 +87,28 @@ void private_update_any(Argument_handling *args, LuaCEmbedTable *table){
 
 Argument_handling *new_Argument_handling(LuaCEmbed *args, LuaCEmbedTable *args_peek){
 
+  Errors *errors_request = malloc(sizeof(Errors) + 1);
+  if(!errors_request){
+    printf("Internal error: struct Errors in Argument_handling");
+    exit(1);
+  }
+
   Argument_handling *self = malloc(sizeof(Argument_handling) + 1);
   if(!self){
     printf("Internal error in struct Argument_handling");
     exit(1);
   }
   
+  self->errors = errors_request;
+
   self->URL = lua_n.tables.get_string_prop(args_peek, "URL");
   if(lua_n.has_errors(args)){
-    self->in_error = true;
-    self->error_msg = "Error: URL invalid;";
+    self->errors->exist = true;
+    self->errors->msg = "Error: URL invalid;";
     return NULL;
   }
 
-  self->in_error = false;
+  self->errors->exist = false;
 
   self->MAX_ALLOW_REDIRECTS = (long)private_get_result_or_default(args_peek, "MAX_ALLOW_REDIRECTS", (void*)1000, (void*)lua_n.tables.get_long_prop);
 

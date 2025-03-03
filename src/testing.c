@@ -11,8 +11,8 @@ int main(){
 
   Add_callbacks(l);
   
-  lua_n.evaluate(l, "r = peek({URL='https://serjaoberranteiroserver.com.br', HEADERS={key1='value'})");
-  const char *response = lua_n.get_string_evaluation(l,"r");
+  lua_n.evaluate(l, "r = peek({URL='https://serjaoberranteiroserver.com.br', HEADERS={key1='value'}})");
+  const char *response = lua_n.get_string_evaluation(l,"r.error.exist");
   //printf("result: %s\n",response);
   printf("resonse");
 

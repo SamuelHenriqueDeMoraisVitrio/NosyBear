@@ -34,10 +34,6 @@ void set_body(LuaCEmbed *args, LuaCEmbedTable *response_table, BearHttpsResponse
 
 LuaCEmbedResponse *new_response_to_lua(LuaCEmbed *args, BearHttpsResponse *response, Errors *errors){
   
-  if(errors->exist){
-    return lua_n.response.send_table(private_error_response(args, errors));
-  }
-
   LuaCEmbedTable *response_table = lua_n.tables.new_anonymous_table(args);
 
   lua_n.tables.set_long_prop(response_table, "status_code", bear.response.get_status_code(response));
@@ -48,14 +44,20 @@ LuaCEmbedResponse *new_response_to_lua(LuaCEmbed *args, BearHttpsResponse *respo
 
   lua_n.tables.append_table(response_table, private_error_response(args, errors));
 
+  if(bear.response.error(response)){
+    errors->exist = true;
+    errors->msg = bear.response.get_error_msg(response);
+    return lua_n.response.send_table(private_error_response(args, errors));
+  }
+
   return lua_n.response.send_table(response_table);
 }
 
 LuaCEmbedResponse *requesition(LuaCEmbed *args){
 
   Argument_handling *arguments_of_peek = private_arguments_requisition(args);
-  if(!arguments_of_peek){
-    return NULL;
+  if(arguments_of_peek->errors->exist){
+    return lua_n.response.send_table(private_error_response(args, arguments_of_peek->errors));
   }
 
   BearHttpsRequest *request = bear.request.newBearHttpsRequest(arguments_of_peek->URL);
@@ -81,23 +83,17 @@ LuaCEmbedResponse *requesition(LuaCEmbed *args){
     }
   }
 
-  bear.request.represent(request);
   BearHttpsResponse *response = bear.request.fetch(request);
   response->max_body_size = arguments_of_peek->MAX_DOWNLOAD_SIZE;
 
-  unsigned char *body = bear.response.read_body(response);
-  long long size_body = bear.response.get_body_size(response);
-
-  if(bear.response.error(response)){
-    printf("Error: %s", bear.response.get_error_msg(response));
-    exit(1);
-  }
+  printf("\n\taaaq\n");
+  LuaCEmbedResponse *out = new_response_to_lua(args, response, arguments_of_peek->errors);
 
   bear.request.free(request);
   bear.response.free(response);
   free_Argument_handling(arguments_of_peek);
 
-  return lua_n.response.send_raw_string((const char *)body, size_body);
+  return out;
 }
 
 

@@ -16,7 +16,6 @@ struct Argument_handling{
   const unsigned char *UPLOAD_ANY;
   short any_type;
   long long SIZE_UPLOAD;
-  bool in_error;
-  const char *error_msg;
+  Errors *errors;
 };
 
