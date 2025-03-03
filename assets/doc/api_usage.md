@@ -15,7 +15,7 @@ To request a link
 ```lua
   params_peek = {
     URL="",
-    HEADERS={KEY=VALUE, ...},
+    HEADERS={KEY=VALUE, {key="key-0", value="value"}, KEy2=VALUE, KE3=VALUE, KEY4=VALUE,},
     MAX_ALLOW_REDIRECTS=INTEGER,
     METHOD=STRING_OF_METHOD,
     MAX_DOWNLOAD_SIZE=INTEGER,
@@ -30,7 +30,7 @@ To request a link
 | PARAM               | Types Value                            | Examplo                                                | DEFAULT      | Explain                     |
 |---------------------|----------------------------------------|--------------------------------------------------------|--------------|-----------------------------|
 | URL                 | Table                                  | {"Key"="Value"}                                        | Mandatory    | URL to feth                 |
-| HEADER              | Table                                  | {"Key"="Value"}                                        | nil          | Headers to be passed        |
+| HEADER              | Table                                  | {"Key"="Value"} or {{key="name", value="value"}}       | nil          | Headers to be passed        |
 | MAX_ALLOW_REDIRECTS | Boolean                                | 0                                                      | ()           | Maximum redirects           |
 | METHOD              | String                                 | "GET"                                                  | "GET"        | Method of request           |
 | MAX_DOWNLOAD_SIZE   | Integer                                | 1000                                                   | ()           | Download space limit        |

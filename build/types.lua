@@ -1,5 +1,5 @@
 
-TYPES = darwin.candango.Get_text_by_file_content("assets/types/types")
+--TYPES = darwin.candango.Get_text_by_file_content("assets/types/types.lua")
 
 function Update_types()
 

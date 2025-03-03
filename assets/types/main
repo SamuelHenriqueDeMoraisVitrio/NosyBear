@@ -3,7 +3,7 @@
   local path = "assets/types/"
 }
 
-{darwin.dtw.load_file(path .. "types")}
+{darwin.dtw.load_file(path .. "types.lua")}
 
 ---@return NosyBear
 local function get_NosyBear_lib()

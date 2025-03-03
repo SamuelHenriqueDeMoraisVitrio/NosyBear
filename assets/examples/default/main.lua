@@ -9,9 +9,15 @@ local params = {
 }
 
 local response = NosyBear.peek(params)
-response = ""
 
-print("\n\tresponse:\n", response, "\n\t:Response;")
+if response.error.exist then
+  print(response.error.message)
+  return
+end
+
+print(response.body.content)
+
+
 
 
 
