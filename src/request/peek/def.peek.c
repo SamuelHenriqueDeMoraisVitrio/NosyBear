@@ -26,7 +26,7 @@ void set_headers(LuaCEmbed *args, LuaCEmbedTable *response_table, BearHttpsRespo
 void set_body(LuaCEmbed *args, LuaCEmbedTable *response_table, BearHttpsResponse *response){
   LuaCEmbedTable *body_table = lua_n.tables.new_anonymous_table(args);
 
-  lua_n.tables.set_raw_string_prop(body_table, "content", (const char *)bear.response.read_body(response), bear.response.get_body_size(response));
+  lua_n.tables.set_string_prop(body_table, "content", (const char *)bear.response.read_body(response));
   lua_n.tables.set_long_prop(body_table, "size", bear.response.get_body_size(response));
 
   lua_n.tables.set_sub_table_prop(response_table, "body", body_table);
@@ -42,7 +42,7 @@ LuaCEmbedResponse *new_response_to_lua(LuaCEmbed *args, BearHttpsResponse *respo
 
   set_body(args, response_table, response);
 
-  lua_n.tables.append_table(response_table, private_error_response(args, errors));
+  lua_n.tables.set_sub_table_prop(response_table, "error", private_error_response(args, errors));
 
   if(bear.response.error(response)){
     errors->exist = true;
@@ -86,7 +86,6 @@ LuaCEmbedResponse *requesition(LuaCEmbed *args){
   BearHttpsResponse *response = bear.request.fetch(request);
   response->max_body_size = arguments_of_peek->MAX_DOWNLOAD_SIZE;
 
-  printf("\n\taaaq\n");
   LuaCEmbedResponse *out = new_response_to_lua(args, response, arguments_of_peek->errors);
 
   bear.request.free(request);
