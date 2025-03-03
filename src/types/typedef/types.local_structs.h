@@ -14,4 +14,9 @@ typedef struct Params_list Params_list;
 
 typedef struct Argument_handling Argument_handling;
 
+typedef struct response_struct Response;
+
+typedef struct Body Body;
+
+typedef struct Errors Errors;
 

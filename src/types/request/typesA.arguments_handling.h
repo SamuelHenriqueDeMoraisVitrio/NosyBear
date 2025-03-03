@@ -11,8 +11,12 @@ struct Argument_handling{
   long MAX_ALLOW_REDIRECTS;
   const char *METHOD;
   long MAX_DOWNLOAD_SIZE;
+  bool UPLOAD;
   const char *UPLOAD_PATH;
-  const char *UPLOAD_ANY;
-  const char *UPLOAD_CONTENT_TYPE;
+  const unsigned char *UPLOAD_ANY;
+  short any_type;
+  long long SIZE_UPLOAD;
+  bool in_error;
+  const char *error_msg;
 };
 

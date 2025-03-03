@@ -15,15 +15,12 @@ To request a link
 ```lua
   params_peek = {
     URL="",
-    PARAMS={KEY=VALUE, ...},
     HEADERS={KEY=VALUE, ...},
-    COOKIES={KEY=VALUE, ...},
     MAX_ALLOW_REDIRECTS=INTEGER,
     METHOD=STRING_OF_METHOD,
     MAX_DOWNLOAD_SIZE=INTEGER,
     UPLOAD_PATH=STRING,
-    UPLOAD_ANY=STRING_TABLE,
-    UPLOAD_CONTENT_TYPE=STRING
+    UPLOAD_ANY=STRING_TABLE
   }
 
   local response = NosyBear.peek(params_peek)
@@ -60,8 +57,6 @@ The request response
   local body_json = response.body.content_json
   ---@type integer
   local body_size = response.body.size
-  ---@type table
-  local cookies = response.cookies
   ---@type table
   local headers = response.headers
   ---@type integer
