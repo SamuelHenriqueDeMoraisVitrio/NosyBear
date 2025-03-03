@@ -77,6 +77,7 @@ The request response
   ---@type string
   local requisition_error_message = response.error.message
 
+```
 ---
 
 
