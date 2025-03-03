@@ -5,7 +5,6 @@
 //silver_chain_scope_end
 
 
-Argument_handling *private_arguments_requisition(LuaCEmbed *args);
 
 LuaCEmbedResponse  *requesition(LuaCEmbed *args);
 

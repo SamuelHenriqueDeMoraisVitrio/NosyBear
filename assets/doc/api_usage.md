@@ -22,24 +22,26 @@ To request a link
     METHOD=STRING_OF_METHOD,
     MAX_DOWNLOAD_SIZE=INTEGER,
     UPLOAD_PATH=STRING,
-    UPLOAD_ANY=STRING_TABLE
+    UPLOAD_ANY=STRING_TABLE,
+    UPLOAD_CONTENT_TYPE=STRING
   }
 
   local response = NosyBear.peek(params_peek)
 
 ```
 
-| PARAM               | Types Value               | Examplo                                                | DEFAULT     | Explain                     |
-|---------------------|---------------------------|--------------------------------------------------------|-------------|-----------------------------|
-| URL                 | Table                     | {"Key"="Value"}                                        | Mandatory   | URL to feth                 |
-| PARAMS              | Table                     | {"Key"="Value"}                                        | nil         | Params to be passed         |
-| HEADER              | Table                     | {"Key"="Value"}                                        | nil         | Headers to be passed        |
-| COOKIES             | Table                     | {"Key"="Value"}                                        | nil         | Cookies to be passed        |
-| MAX_ALLOW_REDIRECTS | Boolean                   | 0                                                      | ()          | Maximum redirects           |
-| METHOD              | String                    | "GET"                                                  | "GET"       | Method of request           |
-| MAX_DOWNLOAD_SIZE   | Integer                   | 1000                                                   | ()          | Download space limit        |
-| UPLOAD_PATH         | String                    | "/home/Documents/juninho_trevozo.txt"                  | Dont upload | File path to pass to body   |
-| UPLOAD_ANY          | String or table(for:json) | "Binary string" or {name="juninho", nikname="Trevoso"} | Dont upload | Binary or json to pass body |
+| PARAM               | Types Value               | Examplo                                                | DEFAULT      | Explain                     |
+|---------------------|---------------------------|--------------------------------------------------------|--------------|-----------------------------|
+| URL                 | Table                     | {"Key"="Value"}                                        | Mandatory    | URL to feth                 |
+| PARAMS              | Table                     | {"Key"="Value"}                                        | nil          | Params to be passed         |
+| HEADER              | Table                     | {"Key"="Value"}                                        | nil          | Headers to be passed        |
+| COOKIES             | Table                     | {"Key"="Value"}                                        | nil          | Cookies to be passed        |
+| MAX_ALLOW_REDIRECTS | Boolean                   | 0                                                      | ()           | Maximum redirects           |
+| METHOD              | String                    | "GET"                                                  | "GET"        | Method of request           |
+| MAX_DOWNLOAD_SIZE   | Integer                   | 1000                                                   | ()           | Download space limit        |
+| UPLOAD_PATH         | String                    | "/home/Documents/juninho_trevozo.txt"                  | Dont upload  | File path to pass to body   |
+| UPLOAD_ANY          | String or table(for:json) | "Binary string" or {name="juninho", nikname="Trevoso"} | Dont upload  | Binary or json to pass body |
+| UPLOAD_CONTENT_TYPE | String                    | "text/plain"                                           | "text/plain" | Past content type.          |
 
 ---
 
@@ -52,10 +54,12 @@ The request response
   
   ---@type string
   local url_response = response.url
-  ---@type string|table|any
-  local body = response.body
-  ---@type string
-  local type_body = response.type_body
+  ---@type string|any|nil
+  local body = response.body.content
+  ---@type table|nil
+  local body_json = response.body.content_json
+  ---@type integer
+  local body_size = response.body.size
   ---@type table
   local cookies = response.cookies
   ---@type table
@@ -63,7 +67,9 @@ The request response
   ---@type integer
   local status_code = response.status_code
   ---@type Boolean
-  local requisition_error = response.error
+  local requisition_error = response.error.exist
+  ---@type string
+  local requisition_error_message = response.error.message
 
   if requisition_error.exist then
     print(requisition_error.message)

@@ -11,7 +11,7 @@ int main(){
 
   Add_callbacks(l);
   
-  lua_n.evaluate(l, "r = peek({URL='https://www.google.com', HEADERS={key1='value', key2='value'}})");
+  lua_n.evaluate(l, "r = peek({URL='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpMsvO0tOs50LxCLx-x33yqr-4Z_nAwSLuLQ&s', HEADERS={key1='value', key2='value', Content_Type='application/json', Content_Type='text/html'}})");
   const char *response = lua_n.get_string_evaluation(l,"r");
   //printf("result: %s\n",response);
   printf("resonse");
